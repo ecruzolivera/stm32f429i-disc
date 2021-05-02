@@ -13,7 +13,6 @@ use core::{
 
 use cortex_m::interrupt as cm_interrupt;
 use cortex_m::interrupt::Mutex;
-use cortex_m::Peripherals;
 use cortex_m_rt::entry;
 use stm32f429i_disc as board;
 
@@ -35,7 +34,7 @@ static FLAG: AtomicBool = AtomicBool::new(false);
 
 #[entry]
 fn main() -> ! {
-    if let (Some(p), Some(_)) = (stm32::Peripherals::take(), Peripherals::take()) {
+    if let Some(p) = stm32::Peripherals::take() {
         // Constrain clock registers
         let rcc = p.RCC.constrain();
         // Configure clock to 180 MHz (i.e. the maximum) and freeze it
