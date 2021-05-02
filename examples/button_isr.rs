@@ -1,3 +1,8 @@
+//! # Button handling using ISR
+//!
+//! This example handles the stm32f429-disco board user button using an ISR and a flag
+//! The leds are toggle using a global flag for no particular reason.
+
 #![no_main]
 #![no_std]
 
