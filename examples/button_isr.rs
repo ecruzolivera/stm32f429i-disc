@@ -16,10 +16,7 @@ use cortex_m::interrupt::Mutex;
 use cortex_m_rt::entry;
 use stm32f429i_disc as board;
 
-use board::{
-    asm::wfi,
-    led::{Color, Leds},
-};
+use board::led::{Color, Leds};
 use board::{gpio::Edge, hal::prelude::*};
 use board::{
     gpio::{Input, PullDown},
@@ -69,7 +66,7 @@ fn main() -> ! {
         }
     }
     loop {
-        wfi();
+        defmt::panic!("Error taking the peripherals");
     }
 }
 
